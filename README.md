@@ -29,6 +29,16 @@ Results can be quite different between different devices, so here are some resul
 - [OnePlus 5](#oneplus-5)
 - [Nexus 6](#nexus-6)
 
+### LG G4
+
+Library | Setup Kotlin | Setup Java | Inject Kotlin | Inject Java
+--- | ---:| ---:| ---:| ---:
+**Koin** | 14.14 ms | 14.13 ms  | 2.14 ms | 2.12 ms
+**Kodein** | 50.29 ms | 53.49 ms  | 6.00 ms | 5.86 ms
+**Katana** | 8.19 ms | 8.50 ms  | 1.30 ms | 1.28 ms
+**Custom** | 3.21 ms | 3.16 ms  | 0.50 ms | 0.60 ms
+**Dagger** | 0.01 ms | 0.01 ms  | 0.17 ms | 0.15 ms
+
 ### Samsung Galaxy J5
 samsung j5nlte with Android 6.0.1
  
