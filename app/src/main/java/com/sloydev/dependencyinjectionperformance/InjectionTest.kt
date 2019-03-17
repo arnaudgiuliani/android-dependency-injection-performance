@@ -15,9 +15,11 @@ import com.sloydev.dependencyinjectionperformance.koin.koinKotlinModule
 import org.kodein.di.Kodein
 import org.kodein.di.direct
 import org.kodein.di.erased.instance
-import org.koin.core.Koin
-import org.koin.core.KoinComponent
-import org.koin.dsl.koinApplication
+import org.koin.log.EmptyLogger
+import org.koin.standalone.KoinComponent
+import org.koin.standalone.StandAloneContext.startKoin
+import org.koin.standalone.StandAloneContext.stopKoin
+import org.koin.standalone.get
 import org.rewedigital.katana.Component
 import org.rewedigital.katana.Katana
 import org.rewedigital.katana.android.environment.AndroidEnvironmentContext
@@ -70,26 +72,22 @@ class InjectionTest : KoinComponent {
 
     private fun koinTest(): LibraryResult {
         log("Running Koin...")
-        lateinit var koin: Koin
         return LibraryResult(
             "Koin", mapOf(
                 Variant.KOTLIN to runTest(
                     setup = {
-                        koin = koinApplication {
-                            modules(listOf(koinKotlinModule))
-                        }.koin
+                        startKoin(listOf(koinKotlinModule), logger = EmptyLogger())
                     },
-                    test = { koin.get<Fib8>() }
+                    test = { get<Fib8>() },
+                    teardown = { stopKoin() }
                 )
                 ,
                 Variant.JAVA to runTest(
                     setup = {
-                        koin = koinApplication {
-                            modules(listOf(koinJavaModule)
-                            )
-                        }.koin
+                        startKoin(listOf(koinJavaModule), logger = EmptyLogger())
                     },
-                    test = { koin.get<FibonacciJava.Fib8>() }
+                    test = { get<FibonacciJava.Fib8>() },
+                    teardown = { stopKoin() }
                 )
             )
         )
