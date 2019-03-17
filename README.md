@@ -30,11 +30,21 @@ Results can be quite different between different devices, so here are some resul
 - [Nexus 6](#nexus-6)
 
 
+### LG G4 - Koin 1.0.2
+
+Library | Setup Kotlin | Setup Java | Inject Kotlin | Inject Java
+--- | ---:| ---:| ---:| ---:
+**Koin**  | 209.75 ms | 705.35 ms  | 146.60 ms | 182.43 ms
+**Kodein** | 55.52 ms | 59.30 ms  | 6.08 ms | 6.10 ms
+**Custom** | 3.32 ms | 3.34 ms  | 0.47 ms | 0.58 ms
+**Katana** | 8.62 ms | 8.64 ms  | 1.32 ms | 1.29 ms
+**Dagger** | 0.01 ms | 0.01 ms  | 0.18 ms | 0.15 ms
+
 ### LG G4 - Koin 2.0 beta-5
 
 Library | Setup Kotlin | Setup Java | Inject Kotlin | Inject Java
 --- | ---:| ---:| ---:| ---:
-**Koin** | 11.47 ms | 11.18 ms  | 1.29 ms | 1.27 ms
+**Koin**  | 11.47 ms | 11.18 ms  | 1.29 ms | 1.27 ms
 **Kodein** | 36.53 ms | 37.73 ms  | 3.92 ms | 3.85 ms
 **Katana** | 5.26 ms | 5.53 ms  | 0.90 ms | 0.81 ms
 **Custom** | 2.22 ms | 1.99 ms  | 0.39 ms | 0.36 ms
