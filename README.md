@@ -33,11 +33,11 @@ Results can be quite different between different devices, so here are some resul
 
 Library | Setup Kotlin | Setup Java | Inject Kotlin | Inject Java
 --- | ---:| ---:| ---:| ---:
-**Koin** | 14.14 ms | 14.13 ms  | 2.14 ms | 2.12 ms
 **Kodein** | 50.29 ms | 53.49 ms  | 6.00 ms | 5.86 ms
-**Katana** | 8.19 ms | 8.50 ms  | 1.30 ms | 1.28 ms
-**Custom** | 3.21 ms | 3.16 ms  | 0.50 ms | 0.60 ms
-**Dagger** | 0.01 ms | 0.01 ms  | 0.17 ms | 0.15 ms
+**Koin**   | 11.09 ms | 10.77 ms  | 1.31 ms | 1.35 ms
+**Katana** | 5.51 ms | 5.46 ms  | 0.90 ms | 0.94 ms
+**Custom** | 1.95 ms | 2.20 ms  | 0.35 ms | 0.38 ms
+**Dagger** | 0.01 ms | 0.01 ms  | 0.12 ms | 0.09 ms
 
 ### Samsung Galaxy J5
 samsung j5nlte with Android 6.0.1
