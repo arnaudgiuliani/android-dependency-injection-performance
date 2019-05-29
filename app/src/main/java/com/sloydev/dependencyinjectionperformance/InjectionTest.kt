@@ -12,10 +12,12 @@ import com.sloydev.dependencyinjectionperformance.katana.katanaJavaModule
 import com.sloydev.dependencyinjectionperformance.katana.katanaKotlinModule
 import com.sloydev.dependencyinjectionperformance.koin.koinJavaModule
 import com.sloydev.dependencyinjectionperformance.koin.koinKotlinModule
-import org.koin.core.KoinComponent
-import org.koin.core.context.startKoin
+import org.kodein.di.Kodein
+import org.kodein.di.direct
+import org.kodein.di.erased.instance
+import org.koin.core.Koin
 import org.koin.core.context.stopKoin
-import org.koin.core.get
+import org.koin.dsl.koinApplication
 import org.rewedigital.katana.Component
 import org.rewedigital.katana.Katana
 import org.rewedigital.katana.android.environment.AndroidEnvironmentContext
@@ -23,7 +25,7 @@ import org.rewedigital.katana.android.environment.AndroidEnvironmentContext.Prof
 import org.rewedigital.katana.createComponent
 import javax.inject.Inject
 
-class InjectionTest : KoinComponent {
+class InjectionTest {
 
     private val kotlinDaggerTest = KotlinDaggerTest()
     private val javaDaggerTest = JavaDaggerTest()
@@ -32,10 +34,10 @@ class InjectionTest : KoinComponent {
 
     fun runTests() {
         val results = listOf(
-            koinTest(),
-//            kodeinTest(),
-            katanaTest(),
             customTest(),
+            koinTest(),
+            kodeinTest(),
+            katanaTest(),
             daggerTest()
         )
         reportMarkdown(results)
@@ -68,42 +70,41 @@ class InjectionTest : KoinComponent {
 
     private fun koinTest(): LibraryResult {
         log("Running Koin...")
+        lateinit var koin: Koin
         return LibraryResult("Koin", mapOf(
             Variant.KOTLIN to runTest(
                 setup = {
-                    startKoin {
+                    koin = koinApplication {
                         modules(koinKotlinModule)
-                    }
+                    }.koin
                 },
-                test = { get<Fib8>() },
-                teardown = { stopKoin() }
+                test = { koin.get<Fib8>() }
             ),
             Variant.JAVA to runTest(
                 setup = {
-                    startKoin {
+                    koin = koinApplication {
                         modules(koinJavaModule)
-                    }
+                    }.koin
                 },
-                test = { get<FibonacciJava.Fib8>() },
-                teardown = { stopKoin() }
+                test = { koin.get<FibonacciJava.Fib8>() }
             )
         ))
     }
 
-//    private fun kodeinTest(): LibraryResult {
-//        log("Running Kodein...")
-//        lateinit var kodein: Kodein
-//        return LibraryResult("Kodein", mapOf(
-//            Variant.KOTLIN to runTest(
-//                setup = { kodein = Kodein { import(kodeinKotlinModule) } },
-//                test = { kodein.direct.instance<Fib8>() }
-//            ),
-//            Variant.JAVA to runTest(
-//                setup = { kodein = Kodein { import(kodeinKotlinModule) } },
-//                test = { kodein.direct.instance<Fib8>() }
-//            )
-//        ))
-//    }
+    private fun kodeinTest(): LibraryResult {
+        log("Running Kodein...")
+        lateinit var kodein: Kodein
+        return LibraryResult("Kodein", mapOf(
+            Variant.KOTLIN to runTest(
+                setup = { kodein = Kodein { import(kodeinKotlinModule) } },
+                test = { kodein.direct.instance<Fib8>() }
+            ),
+            Variant.JAVA to runTest(
+                setup = { kodein = Kodein { import(kodeinKotlinModule) } },
+                test = { kodein.direct.instance<Fib8>() }
+            )
+        ))
+    }
 
     private fun katanaTest(): LibraryResult {
         log("Running Katana...")
