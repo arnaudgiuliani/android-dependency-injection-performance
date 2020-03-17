@@ -16,8 +16,8 @@ import org.kodein.di.Kodein
 import org.kodein.di.direct
 import org.kodein.di.erased.instance
 import org.koin.core.Koin
+import org.koin.core.context.startKoin
 import org.koin.core.context.stopKoin
-import org.koin.dsl.koinApplication
 import org.rewedigital.katana.Component
 import org.rewedigital.katana.Katana
 import org.rewedigital.katana.android.environment.AndroidEnvironmentContext
@@ -74,19 +74,21 @@ class InjectionTest {
         return LibraryResult("Koin", mapOf(
             Variant.KOTLIN to runTest(
                 setup = {
-                    koin = koinApplication {
+                    koin = startKoin {
                         modules(koinKotlinModule)
                     }.koin
                 },
-                test = { koin.get<Fib8>() }
+                test = { koin.get<Fib8>() },
+                teardown = { stopKoin() }
             ),
             Variant.JAVA to runTest(
                 setup = {
-                    koin = koinApplication {
+                    koin = startKoin {
                         modules(koinJavaModule)
                     }.koin
                 },
-                test = { koin.get<FibonacciJava.Fib8>() }
+                test = { koin.get<FibonacciJava.Fib8>() },
+                teardown = { stopKoin() }
             )
         ))
     }

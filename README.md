@@ -29,8 +29,9 @@ Results can be quite different between different devices, so here are some resul
 - [OnePlus 5](#oneplus-5)
 - [Nexus 6](#nexus-6)
 
-### LG G4
+### lge p1 with Android 6.0
 
+Koin 2.0
 Library | Setup Kotlin | Setup Java | Inject Kotlin | Inject Java
 --- | ---:| ---:| ---:| ---:
 **Custom** | 2.05 ms  | 2.13 ms  | 0.30 ms | 0.36 ms
@@ -39,12 +40,33 @@ Library | Setup Kotlin | Setup Java | Inject Kotlin | Inject Java
 **Katana** | 5.37 ms  | 5.84 ms  | 0.82 ms | 0.77 ms
 **Dagger** | 0.01 ms  | 0.01 ms  | 0.13 ms | 0.09 ms
 
-### Nokia 7p
-
+Koin 2.1
 Library | Setup Kotlin | Setup Java | Inject Kotlin | Inject Java
 --- | ---:| ---:| ---:| ---:
-**Custom** | 0.11 ms | 0.09 ms  | 0.06 ms | 0.06 ms
-**Koin**   | 0.53 ms | 0.49 ms  | 0.08 ms | 0.06 ms
-**Kodein** | 5.41 ms | 5.24 ms  | 0.12 ms | 0.09 ms
-**Katana** | 0.37 ms | 0.36 ms  | 0.06 ms | 0.10 ms
-**Dagger** | 0.01 ms | 0.01 ms  | 0.05 ms | 0.05 ms
+**Custom** | 0.47 ms  | 0.45 ms  | 0.07 ms | 0.08 ms
+**Koin**   | 4.11 ms  | 4.19 ms  | 0.29 ms | 0.28 ms
+**Kodein** | 14.50 ms | 14.58 ms | 0.77 ms | 0.78 ms
+**Katana** | 1.55 ms  | 1.49 ms  | 0.19 ms | 0.18 ms
+**Dagger** | 0.00 ms  | 0.00 ms  | 0.02 ms | 0.02 ms
+
+### HONOR HNKIW-Q with Android 6.0.1
+
+Koin 2.1
+Library | Setup Kotlin | Setup Java | Inject Kotlin | Inject Java
+--- | ---:| ---:| ---:| ---:
+**Custom** | 0.46 ms  | 0.41 ms  | 0.06 ms | 0.08 ms
+**Koin**   | 3.40 ms  | 3.54 ms  | 0.24 ms | 0.23 ms
+**Kodein** | 11.48 ms | 11.68 ms | 0.62 ms | 0.65 ms
+**Katana** | 1.60 ms  | 1.61 ms  | 0.15 ms | 0.14 ms
+**Dagger** | 0.00 ms  | 0.00 ms  | 0.02 ms | 0.02 ms
+
+### Nokia B2N_sprout with Android 10
+
+Koin 2.1
+Library | Setup Kotlin | Setup Java | Inject Kotlin | Inject Java
+--- | ---:| ---:| ---:| ---:
+**Custom** | 0.09 ms | 0.09 ms  | 0.12 ms | 0.08 ms
+**Koin**   | 0.66 ms | 0.74 ms  | 0.12 ms | 0.11 ms
+**Kodein** | 5.10 ms | 5.59 ms  | 0.21 ms | 0.10 ms
+**Katana** | 0.47 ms | 0.42 ms  | 0.12 ms | 0.10 ms
+**Dagger** | 0.00 ms | 0.00 ms  | 0.04 ms | 0.04 ms

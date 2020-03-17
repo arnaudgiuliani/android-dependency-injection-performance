@@ -28,7 +28,7 @@ dependencies {
     implementation 'com.google.android.material:material:1.0.0'
 
     // Koin
-    implementation "org.koin:koin-core:2.0.1"
+    implementation "org.koin:koin-core:2.1.4"
 
     // Kodein
     implementation 'org.kodein.di:kodein-di-erased-jvm:5.3.0'
